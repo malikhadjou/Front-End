@@ -10,7 +10,7 @@ function App() {
   return (
     <Routes>
       {/* routes publiques */}
-      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Login />} />
 
       {/* routes admin */}
       <Route path="/admin" element={<AdminLayout />}>
