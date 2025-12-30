@@ -137,7 +137,7 @@ const Sidebar = () => {
       theme="dark"
         mode="inline"
         selectedKeys={[location.pathname]}
-        style={{ marginTop: 175}}
+        style={{ marginTop:"25vh"}}
         items={logOutBtn}/>
     </Sider>
   );
