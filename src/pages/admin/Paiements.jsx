@@ -205,8 +205,7 @@ const Paiements = () => {
     {
       title: "Actions",
       key: "actions",
-      width: 220,
-      fixed: "right",
+      width: 230,
       render: (_, record) => (
         <Space size="small">
           <Button
@@ -246,7 +245,7 @@ const Paiements = () => {
   const facturesImpayees = factures.filter((f) => f.montantRestant > 0);
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div style={{ width: "84vw", height: "100%" }}>
       <Card title="Journal des Paiements" bordered={false} style={{ width: "100%" }}>
         <Space direction="vertical" style={{ width: "100%" }} size="large">
           {/* Statistiques */}

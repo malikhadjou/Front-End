@@ -24,7 +24,7 @@ import {
 } from "@ant-design/icons";
 import { useContext, useEffect, useState } from "react";
 import { ClientContext } from "../../context/clientContext";
-
+import "../../styles/style.css";
 const { TextArea } = Input;
 const { TabPane } = Tabs;
 
@@ -126,7 +126,7 @@ const client = () => {
       title: "Code",
       dataIndex: "code",
       key: "code",
-      width: 120,
+      width: 70,
       sorter: (a, b) => a.code.localeCompare(b.code),
       fixed: "left",
     },
@@ -134,14 +134,15 @@ const client = () => {
       title: "Nom",
       dataIndex: "nom",
       key: "nom",
-      width: 200,
+      width: 90,
       sorter: (a, b) => a.nom.localeCompare(b.nom),
     },
     {
       title: "Type",
       dataIndex: "typeClient",
       key: "typeClient",
-      width: 120,
+      width: 90,
+      style: { marginLeft: "center" },
       filters: [
         { text: "Entreprise", value: "Entreprise" },
         { text: "Particulier", value: "Particulier" },
@@ -155,25 +156,25 @@ const client = () => {
       title: "Email",
       dataIndex: "email",
       key: "email",
-      width: 200,
+      width: 150,
     },
     {
       title: "Téléphone",
       dataIndex: "telephone",
       key: "telephone",
-      width: 130,
+      width: 80,
     },
     {
       title: "Ville",
       dataIndex: "ville",
       key: "ville",
-      width: 130,
+      width: 70,
     },
     {
       title: "Solde",
       dataIndex: "solde",
       key: "solde",
-      width: 130,
+      width: 70,
       sorter: (a, b) => a.solde - b.solde,
       render: (solde) => (
         <span style={{ color: solde > 0 ? "#ff4d4f" : "#52c41a", fontWeight: "bold" }}>
@@ -185,7 +186,7 @@ const client = () => {
       title: "Statut",
       dataIndex: "statut",
       key: "statut",
-      width: 120,
+      width: 80,
       filters: [
         { text: "Actif", value: "actif" },
         { text: "Inactif", value: "inactif" },
@@ -200,21 +201,20 @@ const client = () => {
       title: "Date d'inscription",
       dataIndex: "dateInscription",
       key: "dateInscription",
-      width: 150,
+      width: 95,
       sorter: (a, b) => new Date(a.dateInscription) - new Date(b.dateInscription),
     },
     {
       title: "Actions",
       key: "actions",
       width: 200,
-      fixed: "right",
       render: (_, record) => (
         <Space size="small">
           <Button
             type="link"
             icon={<EyeOutlined />}
             onClick={() => handleVoirDetails(record)}
-            size="small"
+            size=""
           >
             Détails
           </Button>
@@ -243,7 +243,7 @@ const client = () => {
   ];
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div style={{ width: "84vw", height: "100vh" }}>
       <Card title="Gestion des Clients" bordered={false} style={{ width: "100%" }}>
         <Space direction="vertical" style={{ width: "100%" }} size="large">
           <Space style={{ justifyContent: "space-between", width: "100%" }}>
@@ -329,7 +329,7 @@ const client = () => {
             </Select>
           </Form.Item>
 
-          <Space style={{ width: "100%" }} size="large">
+          <Space style={{ width: "70vw"}} size="large">
             <Form.Item
               name="email"
               label="Email"

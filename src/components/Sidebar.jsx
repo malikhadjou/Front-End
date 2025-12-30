@@ -1,4 +1,5 @@
-import { Menu, Layout } from "antd";
+import {  Modal ,Menu, Layout } from "antd";
+import { useNavigate } from "react-router-dom";
 import {
   TruckOutlined,
   DashboardOutlined,
@@ -9,6 +10,7 @@ import {
   CarOutlined,
   EnvironmentOutlined,
   CalculatorOutlined,
+  LogoutOutlined, 
 } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
 
@@ -16,7 +18,21 @@ const { Sider } = Layout;
 
 const Sidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
+   const showLogoutConfirm = () => {
+    Modal.confirm({
+      title: "Déconnexion",
+      content: "Voulez-vous vraiment vous déconnecter ?",
+      cancelText: "Annuler",
+      okText: "Oui",
+      okType: "danger",
+      onOk() {
+        navigate("/");
+      },
+      centered: true,
+    });
+  };
   const menuItems = [
     {
       key: "/admin",
@@ -71,10 +87,21 @@ const Sidebar = () => {
       disabled: true,
     },
   ];
+  const logOutBtn = [ 
+    {
+       key: "/",
+      icon: <LogoutOutlined/>,
+       label: (
+      <span onClick={showLogoutConfirm}>
+        Se déconnecter
+      </span>
+    ),
+    },
+  ];
 
   return (
     <Sider
-      width={250}
+      width={"15vw"}
       style={{
         overflow: "auto",
         height: "100vh",
@@ -97,6 +124,7 @@ const Sidebar = () => {
         }}
       >
         🚚 LogiSys
+        
       </div>
       <Menu
         theme="dark"
@@ -105,6 +133,12 @@ const Sidebar = () => {
         style={{ marginTop: 16 }}
         items={menuItems}
       />
+      < Menu 
+      theme="dark"
+        mode="inline"
+        selectedKeys={[location.pathname]}
+        style={{ marginTop: 175}}
+        items={logOutBtn}/>
     </Sider>
   );
 };

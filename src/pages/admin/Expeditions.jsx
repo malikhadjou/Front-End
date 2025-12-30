@@ -3,6 +3,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { useContext, useEffect, useState } from "react";
 import { ExpeditionContext } from "../../context/ExpeditionContext";
 
+
 const Expeditions = () => {
   const { expeditions, fetchExpeditions, updateStatut } =
     useContext(ExpeditionContext);
@@ -83,7 +84,7 @@ const Expeditions = () => {
   ];
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div style={{ width: "85vw", height: "100%" }}>
       <Card
         title="Gestion des Expéditions"
         bordered={false}
