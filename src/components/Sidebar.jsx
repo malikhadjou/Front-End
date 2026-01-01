@@ -66,7 +66,6 @@ const Sidebar = () => {
       key: "/admin/reclamations",
       icon: <WarningOutlined />,
       label: <Link to="/admin/reclamations">Réclamations</Link>,
-      disabled: true,
     },
     {
       key: "/admin/tournees",
@@ -123,7 +122,8 @@ const Sidebar = () => {
           borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
         }}
       >
-        🚚 LogiSys
+        <img src="../../public/tracking (1).png" alt="" style={{width : "30px", marginRight : "5px"}}/>
+        <p>Sahara Express</p>
         
       </div>
       <Menu

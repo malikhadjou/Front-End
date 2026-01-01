@@ -56,7 +56,7 @@ const Home = () => {
       icon: <WarningOutlined style={{ fontSize: 40, color: "#f59e0b" }} />,
       color: "#f59e0b",
       path: "/admin/reclamations",
-      available: false,
+      available: true,
     },
     {
       title: "Tournées",

@@ -6,6 +6,7 @@ import { ExpeditionProvider } from "./context/ExpeditionContext";
 import { FactureProvider } from "./context/FactureContext";
 import { ClientProvider } from "./context/clientContext";
 import { PaiementProvider } from "./context/PaiementContext";
+import { ReclamationProvider } from "./context/ReclamationContext";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -14,7 +15,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <FactureProvider>
         <ClientProvider>
           <PaiementProvider>
+            <ReclamationProvider>
             <App />
+            </ReclamationProvider>
           </PaiementProvider>
         </ClientProvider>
       </FactureProvider>
