@@ -10,7 +10,9 @@ import {
   CarOutlined,
   EnvironmentOutlined,
   CalculatorOutlined,
-  LogoutOutlined, 
+  LogoutOutlined,
+  IdcardOutlined,
+  DeploymentUnitOutlined,
 } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
 
@@ -67,23 +69,30 @@ const Sidebar = () => {
       icon: <WarningOutlined />,
       label: <Link to="/admin/reclamations">Réclamations</Link>,
     },
+      {
+    key: "/admin/chauffeurs",
+    icon: < IdcardOutlined />,
+    label: <Link to="/admin/chauffeurs">Chauffeurs</Link>,
+  },
+  {
+    key: "/admin/vehicules",
+    icon: <CarOutlined />,
+    label: <Link to="/admin/vehicules">Véhicules</Link>,
+  },
     {
       key: "/admin/tournees",
-      icon: <CarOutlined />,
+      icon: <DeploymentUnitOutlined />,
       label: <Link to="/admin/tournees">Tournées</Link>,
-      disabled: true,
     },
     {
       key: "/admin/destinations",
       icon: <EnvironmentOutlined />,
       label: <Link to="/admin/destinations">Destinations</Link>,
-      disabled: true,
     },
     {
       key: "/admin/tarification",
       icon: <CalculatorOutlined />,
       label: <Link to="/admin/tarification">Tarification</Link>,
-      disabled: true,
     },
   ];
   const logOutBtn = [ 
@@ -122,7 +131,7 @@ const Sidebar = () => {
           borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
         }}
       >
-        <img src="../../public/tracking (1).png" alt="" style={{width : "30px", marginRight : "5px"}}/>
+        <img src="../../public/sahara-expres.png" alt="" style={{width : "30px", marginRight : "5px"}}/>
         <p>Sahara Express</p>
         
       </div>
@@ -137,7 +146,7 @@ const Sidebar = () => {
       theme="dark"
         mode="inline"
         selectedKeys={[location.pathname]}
-        style={{ marginTop:"25vh"}}
+        style={{ marginTop:"12vh"}}
         items={logOutBtn}/>
     </Sider>
   );

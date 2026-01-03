@@ -7,6 +7,12 @@ import { FactureProvider } from "./context/FactureContext";
 import { ClientProvider } from "./context/clientContext";
 import { PaiementProvider } from "./context/PaiementContext";
 import { ReclamationProvider } from "./context/ReclamationContext";
+import { ChauffeurProvider } from "./context/ChauffeurContext";
+import { VehiculeProvider } from "./context/VehiculeContext";
+import { TourneeProvider } from "./context/TourneeContext";
+import { DestinationProvider } from "./context/DestinationContext";
+import { TarificationProvider } from "./context/TarificationContext.jsx";
+
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -16,7 +22,17 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <ClientProvider>
           <PaiementProvider>
             <ReclamationProvider>
-            <App />
+              <ChauffeurProvider>
+                <VehiculeProvider>
+                  <TourneeProvider>
+                    <DestinationProvider>
+                      <TarificationProvider>
+                        <App />
+                      </TarificationProvider>
+                      </DestinationProvider>
+                  </TourneeProvider>
+            </VehiculeProvider>
+              </ChauffeurProvider>
             </ReclamationProvider>
           </PaiementProvider>
         </ClientProvider>

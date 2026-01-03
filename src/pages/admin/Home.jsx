@@ -8,7 +8,9 @@ import {
   CarOutlined,
   EnvironmentOutlined,
   CalculatorOutlined,
- InboxOutlined,
+  InboxOutlined,
+  IdcardOutlined,
+  DeploymentUnitOutlined,
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
@@ -59,12 +61,29 @@ const Home = () => {
       available: true,
     },
     {
+  title: "Chauffeurs",
+  description: "Gérer les chauffeurs et leurs affectations",
+  icon: <IdcardOutlined style={{ fontSize: 40, color: "#0ea5e9" }} />,
+  color: "#0ea5e9",
+  path: "/admin/chauffeurs",
+  available: true,
+},
+{
+  title: "Véhicules",
+  description: "Gérer la flotte de véhicules",
+  icon: <CarOutlined style={{ fontSize: 40, color: "#6366f1" }} />,
+  color: "#6366f1",
+  path: "/admin/vehicules",
+  available: true,
+},
+  
+    {
       title: "Tournées",
       description: "Planifier les tournées de livraison",
-      icon: <CarOutlined style={{ fontSize: 40, color: "#ec4899" }} />,
+      icon: <DeploymentUnitOutlined style={{ fontSize: 40, color: "#ec4899" }} />,
       color: "#ec4899",
       path: "/admin/tournees",
-      available: false,
+      available: true,
     },
     {
       title: "Destinations",
@@ -93,17 +112,17 @@ const Home = () => {
   return (
     <div style={{ padding: "20px" }}>
       {/* Header Section */}
-      <div style={{ marginBottom: 40 }}>
+      <div style={{ marginBottom: 40, textAlign: 'center' }}>
         <Title level={2} style={{ marginBottom: 8 }}>
           Système de Gestion Logistique
         </Title>
-        <Text type="secondary" style={{ fontSize: 16 }}>
+        <Text type="secondary" style={{ fontSize: 17 , textAlign: 'center'}}>
           Gérez efficacement vos opérations logistiques
         </Text>
       </div>
 
       {/* Cards Grid */}
-      <Row gutter={[24, 24]} style={{ marginBottom: 40 }}>
+      <Row gutter={[24, 24]} style={{ marginBottom: 40 , justifyContent: 'center'}}>
         {cards.map((card, index) => (
           <Col xs={24} sm={12} lg={6} key={index}>
             <Card
@@ -147,7 +166,7 @@ const Home = () => {
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <InboxOutlined style={{ fontSize: 48, color: "#0284c7" }} />
           <div>
-            <Title level={4} style={{ marginBottom: 8, color: "#0c4a6e" }}>
+            <Title level={4} style={{ marginBottom: 8, color: "#0c4a6e"}}>
               Bienvenue dans votre système de gestion
             </Title>
             <Text style={{ color: "#0c4a6e" }}>

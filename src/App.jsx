@@ -7,6 +7,11 @@ import Factures from "./pages/admin/Factures";
 import Clients from "./pages/admin/client";
 import Paiements from "./pages/admin/Paiements";
 import Reclamation from "./pages/admin/Reclamation";
+import Chauffeur from "./pages/admin/Chauffeur";
+import Vehicule from "./pages/admin/Vehicule";
+import Tournee from "./pages/admin/Tournee";
+import Destination from "./pages/admin/Destination.jsx";
+import Tarification from "./pages/admin/Tarification";
 function App() {
   return (
     <Routes>
@@ -22,11 +27,16 @@ function App() {
         <Route path="factures" element={<Factures />} />
         <Route path="paiements" element={<Paiements />} />
         <Route path="reclamations" element={<Reclamation />} />
+        <Route path="chauffeurs" element={<Chauffeur />} />
+        <Route path="vehicules" element={<Vehicule />} />
+        <Route path="tournees" element={<Tournee/>} />
+        <Route path="destinations" element={<Destination/>} />
+        <Route path="tarification" element={<Tarification />} />
         {/* Routes vides pour les autres sections */}
  
-        <Route path="tournees" element={<ComingSoon title="Tournées" />} />
-        <Route path="destinations" element={<ComingSoon title="Destinations" />} />
-        <Route path="tarification" element={<ComingSoon title="Tarification" />} />
+        
+
+        
       </Route>
 
       {/* Redirection par défaut */}
@@ -35,20 +45,6 @@ function App() {
   );
 }
 
-// Composant temporaire pour les pages en construction
-const ComingSoon = ({ title }) => (
-  <div style={{ 
-    display: "flex", 
-    justifyContent: "center", 
-    alignItems: "center", 
-    height: "70vh",
-    flexDirection: "column",
-    gap: 16
-  }}>
-    <h1 style={{ fontSize: 48, color: "#999" }}>🚧</h1>
-    <h2>{title}</h2>
-    <p style={{ color: "#666" }}>Cette section sera bientôt disponible</p>
-  </div>
-);
+
 
 export default App;
