@@ -129,14 +129,12 @@ class IncidentListSerializer(serializers.ModelSerializer):
         model = Incident
         fields = [
             'code_inc', 'type', 'type_display', 'etat', 'etat_display',
-            'numexp', 'expedition', 'commentaire', 'date_creation'
+            'numexp', 'expedition', 'wilaya', "commune",'commentaire', 'date_creation', 
+            
         ]
     
     def get_expedition(self, obj):
-        """Retourne une représentation formatée de l'expédition"""
-        if obj.numexp:
-            return f"#{obj.numexp.numexp}"
-        return None
+     return f"EXP-{obj.numexp.numexp}" if obj.numexp else None
 
 
 class IncidentDetailSerializer(serializers.ModelSerializer):
@@ -150,17 +148,21 @@ class IncidentDetailSerializer(serializers.ModelSerializer):
         model = Incident
         fields = [
             'code_inc', 'type', 'type_display', 'etat', 'etat_display',
-            'numexp', 'expedition', 'expedition_info', 'commentaire', 
+            'numexp', 'expedition','wilaya','commune' 'expedition_info', 'commentaire', 
             'piece_jointe', 'resolution', 'date_creation', 'date_resolution'
         ]
     
     def get_expedition(self, obj):
-        """Retourne une représentation formatée de l'expédition"""
+     return f"EXP-{obj.numexp.numexp}" if obj.numexp else None
+
+    def get_expedition_info(self, obj):
         if obj.numexp:
-            return f"#{obj.numexp.numexp}"
+            return {
+                "id": obj.numexp.pk,
+                "numexp": obj.numexp.numexp,
+                "statut": obj.numexp.statut
+            }
         return None
-
-
 class IncidentCreateUpdateSerializer(serializers.ModelSerializer):
     """Serializer pour créer/modifier un incident"""
     code_inc = serializers.CharField(read_only=True)
@@ -169,13 +171,15 @@ class IncidentCreateUpdateSerializer(serializers.ModelSerializer):
         model = Incident
         fields = [
             'code_inc', 'type', 'commentaire', 'piece_jointe', 
-            'etat', 'resolution', 'numexp'
+            'etat', 'resolution', 'numexp','wilaya', 'commune'
         ]
         extra_kwargs = {
             'commentaire': {'required': False, 'allow_blank': True},  # Plus flexible
             'numexp': {'required': False},  # Plus flexible pour PATCH
             'etat': {'required': False},
             'resolution': {'required': False, 'allow_blank': True},
+            'wilaya': {'required': True},
+            'commune': {'required': True},
         }
     
     def validate_commentaire(self, value):
@@ -198,6 +202,10 @@ class IncidentCreateUpdateSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError({
                     'numexp': 'L\'expédition est obligatoire lors de la création.'
                 })
+            if not data.get('wilaya'):
+                raise serializers.ValidationError({'wilaya': 'La wilaya est obligatoire.'})
+            if not data.get('commune'):
+                raise serializers.ValidationError({'commune': 'La commune est obligatoire.'})
         
         # Si on résout l'incident, la résolution est obligatoire
         if data.get('etat') == 'RESOLU' and not data.get('resolution'):

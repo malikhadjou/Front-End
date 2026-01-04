@@ -205,7 +205,20 @@ class Incident(models.Model):
         verbose_name="Résolution",
         help_text="Description de la solution apportée"
     )
-    
+    wilaya = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name="Wilaya",
+        help_text="Wilaya où l'incident a eu lieu"
+    )
+    commune = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name="Commune",
+        help_text="Commune oÇù l'incident a eu lieu"
+    )
     # FK vers EXPEDITION
     numexp = models.ForeignKey(
         Expedition,
