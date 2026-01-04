@@ -63,6 +63,8 @@ export const IncidentProvider = ({ children }) => {
         etat_display: "Nouveau",
         numexp: payload.numexp,
         expedition: `#${payload.numexp}`,
+        wilaya: payload.wilaya,
+        commune: payload.commune,
         date_creation: new Date().toISOString(),
         _isTemp: true,
       };
@@ -144,6 +146,8 @@ export const IncidentProvider = ({ children }) => {
         commentaire: incidentActuel.commentaire,
         numexp: incidentActuel.numexp,
         etat: nouveauEtat,
+        wilaya: incidentActuel.wilaya,
+        commune: incidentActuel.commune,
       };
       
       // Ajouter la résolution si elle existe

@@ -98,6 +98,16 @@ const Incidents = () => {
       render: (text, record) => text || `#${record.numexp}`,
     },
     {
+    title: "Wilaya",
+    dataIndex: "wilaya",
+    key: "wilaya",
+  },
+  {
+    title: "Commune",
+    dataIndex: "commune",
+    key: "commune",
+  },
+    {
       title: "Commentaire",
       dataIndex: "commentaire",
       ellipsis: true,
@@ -315,7 +325,20 @@ const Incidents = () => {
               <Select.Option value="AUTRE">Autre</Select.Option>
             </Select>
           </Form.Item>
-
+            <Form.Item
+    name="wilaya"
+    label="Wilaya"
+    rules={[{ required: true, message: "Veuillez saisir la wilaya" }]}
+  >
+    <Input placeholder="Ex: Alger" />
+  </Form.Item> 
+    <Form.Item
+    name="commune"
+    label="Commune"
+    rules={[{ required: true, message: "Veuillez saisir la commune" }]}
+  >
+    <Input placeholder="Ex: Bab Ezzouar" />
+  </Form.Item>
           <Form.Item
             label="Commentaire"
             name="commentaire"
